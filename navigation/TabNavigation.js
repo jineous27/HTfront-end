@@ -3,6 +3,7 @@ import { Platform } from "react-native";
 
 import { createAppContainer } from "react-navigation";
 import { createBottomTabNavigator } from "react-navigation-tabs";
+import { createStackNavigator } from "react-navigation-stack";
 
 import HomeScreen from "../screens/Home";
 import SearchScreen from "../screens/Search";
@@ -10,12 +11,13 @@ import StatusScreen from "../screens/Status";
 import MyprofileScreen from "../screens/Myprofile";
 import { HT_COLOR, ACTIVE_COLOR, INACTIVE_COLOR } from "../constants/Colors";
 import TabBarIcon from "../Components/TabBarIcon";
+import { createStack } from "./config";
 
 
 const TabNavigation = createBottomTabNavigator(
     {
         Home: {
-            screen: HomeScreen,
+            screen: createStack(HomeScreen, "Home"), //방금 만든걸 이용. 첫번째 파라미터는 HOme scree, 두번째는 Home//
             navigationOptions: {
                 tabBarIcon: ({ focused }) => (
                     <TabBarIcon
@@ -26,7 +28,7 @@ const TabNavigation = createBottomTabNavigator(
             }
         },
         Search: {
-            screen: SearchScreen,
+            screen: createStack(SearchScreen, "Search"),
             navigationOptions: {
                 tabBarIcon: ({ focused }) => (
                     <TabBarIcon
@@ -37,7 +39,7 @@ const TabNavigation = createBottomTabNavigator(
             }
         },
         Status: {
-            screen: StatusScreen,
+            screen: createStack(StatusScreen, "Status"),
             navigationOptions: {
                 tabBarIcon: ({ focused }) => (
                     <TabBarIcon
@@ -48,7 +50,7 @@ const TabNavigation = createBottomTabNavigator(
             }
         },
         Myprofile: {
-            screen: MyprofileScreen,
+            screen: createStack(MyprofileScreen, "Myprofile"),
             navigationOptions: {
                 tabBarIcon: ({ focused }) => (
                     <TabBarIcon
