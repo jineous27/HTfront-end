@@ -12,7 +12,7 @@ export default class App extends Component {
 
   handleError = error => console.log(error);
 
-  handleLoaded = () => this.setState({loaded: true});
+  handleLoaded = () => this.setState({ loaded: true });
 
 
 
@@ -24,20 +24,20 @@ export default class App extends Component {
 
   render() {
     const { loaded } = this.state;
-    if (loaded)
+    if (loaded) {
       return (
-        <AppLoading
-          startAsync={this.loadAssets}
-          onFinish={this.handleLoaded}
-          onError={this.handleError}
-        />
+        <View>
+          <Text>HappyToo Front End Project!</Text>
+        </View>
       );
 
     } else {
       return (
-        <View>
-          <Text>Open up your app now</Text>
-        </View>
+        <AppLoading
+          startAsync={this.loadAssets}
+          onFinish={this.handleLoaded}
+          onError={this.handleError}       
+        />
       );
     }
   }
